@@ -1,0 +1,6 @@
+- [x] Checkpoint 1: uart_controller.v文件已删除
+- [x] Checkpoint 2: dds_top.v已移除所有UART相关代码
+- [x] Checkpoint 3: dds_tb.v已移除UART端口连接
+- [x] Checkpoint 4: compile.do已移除UART控制器编译步骤
+- [x] Checkpoint 5: 编译脚本执行成功，无错误
+- [x] Checkpoint 6: 仿真测试运行成功，按键控制功能正常

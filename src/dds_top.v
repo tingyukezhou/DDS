@@ -6,49 +6,23 @@ module dds_top(
     
     input   [3:0]   key,
     
-    input           uart_rx,
-    output          uart_tx,
-    
     output  [11:0]  wave_out
 );
-
-wire [1:0] wave_sel_key;
-wire [7:0] amplitude_key;
-wire [31:0] freq_word_key;
-wire [11:0] phase_offset_key;
-
-wire [1:0] wave_sel_uart;
-wire [7:0] amplitude_uart;
-wire [31:0] freq_word_uart;
-wire [11:0] phase_offset_uart;
-wire uart_valid;
 
 key_controller key_ctrl(
     .clk(clk),
     .rst_n(rst_n),
     .key(key),
-    .wave_sel(wave_sel_key),
-    .amplitude(amplitude_key),
-    .freq_word(freq_word_key),
-    .phase_offset(phase_offset_key)
+    .wave_sel(wave_sel),
+    .amplitude(amplitude),
+    .freq_word(freq_word),
+    .phase_offset(phase_offset)
 );
 
-uart_controller uart_ctrl(
-    .clk(clk),
-    .rst_n(rst_n),
-    .uart_rx(uart_rx),
-    .uart_tx(uart_tx),
-    .wave_sel(wave_sel_uart),
-    .amplitude(amplitude_uart),
-    .freq_word(freq_word_uart),
-    .phase_offset(phase_offset_uart),
-    .uart_valid(uart_valid)
-);
-
-wire [1:0] wave_sel = uart_valid ? wave_sel_uart : wave_sel_key;
-wire [7:0] amplitude = uart_valid ? amplitude_uart : amplitude_key;
-wire [31:0] freq_word = uart_valid ? freq_word_uart : freq_word_key;
-wire [11:0] phase_offset = uart_valid ? phase_offset_uart : phase_offset_key;
+wire [1:0] wave_sel;
+wire [7:0] amplitude;
+wire [31:0] freq_word;
+wire [11:0] phase_offset;
 
 wire [11:0] phase_out;
 

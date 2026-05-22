@@ -32,10 +32,6 @@ echo "编译 wave_controller.v 完成"
 vlog -sv -work work "../src/key_controller.v"
 echo "编译 key_controller.v 完成"
 
-# UART控制器
-vlog -sv -work work "../src/uart_controller.v"
-echo "编译 uart_controller.v 完成"
-
 # 顶层模块
 vlog -sv -work work "../src/dds_top.v"
 echo "编译 dds_top.v 完成"

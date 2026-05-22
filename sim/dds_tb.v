@@ -16,8 +16,6 @@ dds_top dds_inst(
     .clk(clk),
     .rst_n(rst_n),
     .key(key),
-    .uart_rx(1'b1),
-    .uart_tx(),
     .wave_out(wave_out)
 );
 
