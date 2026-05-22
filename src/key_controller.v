@@ -58,10 +58,10 @@ always @(posedge clk or negedge rst_n) begin
                     amplitude <= amplitude - 8'd16;
             end
             4'b1000: begin
-                if(freq_word < 32'd100000000)
-                    freq_word <= freq_word * 2;
+                if(phase_offset < 12'd4095)
+                    phase_offset <= phase_offset + 12'd256;
                 else
-                    freq_word <= 32'd1000000;
+                    phase_offset <= 12'd0;
             end
         endcase
     end

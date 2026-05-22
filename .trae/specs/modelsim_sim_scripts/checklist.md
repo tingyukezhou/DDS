@@ -6,3 +6,6 @@
 - [x] Checkpoint 6: 仿真测试能验证按键控制波形选择功能
 - [x] Checkpoint 7: 仿真测试能验证按键控制幅值调节功能
 - [x] Checkpoint 8: 仿真测试能验证按键控制频率调节功能
+- [x] Checkpoint 9: 按键控制器已修复，支持相位偏移调节功能
+- [x] Checkpoint 10: UART优先级判断逻辑已修复
+- [x] Checkpoint 11: 测试bench已更新，包含相位偏移测试用例

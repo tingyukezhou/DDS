@@ -64,3 +64,40 @@
   - `programmatic` TR-5.1: 执行脚本后完成整个仿真流程
   - `human-judgment` TR-5.2: 用户只需执行一个脚本即可完成所有操作
 - **Notes**: 添加清理和日志输出功能
+
+## [x] Task 6: 修复按键控制器，添加相位偏移调节功能
+- **Priority**: P0
+- **Depends On**: None
+- **Description**: 
+  - 修改key_controller.v，添加按键控制相位偏移功能
+  - 使用按键4控制相位偏移递增
+  - 相位偏移范围：0~4095
+- **Acceptance Criteria Addressed**: AC-2
+- **Test Requirements**:
+  - `programmatic` TR-6.1: 编译无错误
+  - `human-judgment` TR-6.2: 按键4能正确调节相位偏移
+- **Notes**: 相位偏移步长建议设置为256
+
+## [x] Task 7: 修复UART优先级判断逻辑
+- **Priority**: P0
+- **Depends On**: None
+- **Description**: 
+  - 修改dds_top.v，添加UART使能信号判断
+  - 修复使用`!= 0`判断优先级不准确的问题
+- **Acceptance Criteria Addressed**: AC-2
+- **Test Requirements**:
+  - `programmatic` TR-7.1: 编译无错误
+  - `human-judgment` TR-7.2: 按键控制在UART未使能时正常工作
+- **Notes**: 需要在uart_controller中添加valid信号
+
+## [x] Task 8: 更新测试bench，添加相位偏移测试用例
+- **Priority**: P0
+- **Depends On**: Task 6
+- **Description**: 
+  - 修改dds_tb.v，添加相位偏移测试序列
+  - 验证相位偏移功能是否正常工作
+- **Acceptance Criteria Addressed**: AC-2
+- **Test Requirements**:
+  - `programmatic` TR-8.1: 编译无错误
+  - `human-judgment` TR-8.2: 测试序列覆盖相位偏移调节
+- **Notes**: 测试相位偏移从0到最大值的变化

@@ -10,7 +10,8 @@ module uart_controller(
     output  reg [1:0]   wave_sel,
     output  reg [7:0]   amplitude,
     output  reg [31:0]  freq_word,
-    output  reg [11:0]  phase_offset
+    output  reg [11:0]  phase_offset,
+    output  reg         uart_valid
 );
 
 localparam BAUD_RATE = 9600;
@@ -47,9 +48,10 @@ always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         cmd_state <= 4'd0;
         wave_sel <= 2'd0;
-        amplitude <= 8'd255;
-        freq_word <= 32'd1000000;
+        amplitude <= 8'd0;
+        freq_word <= 32'd0;
         phase_offset <= 12'd0;
+        uart_valid <= 1'b0;
     end else begin
         if(rx_valid) begin
             case(cmd_state)
@@ -74,15 +76,19 @@ always @(posedge clk or negedge rst_n) begin
                     case(cmd_buffer[0])
                         8'h57: begin
                             wave_sel <= cmd_buffer[1][1:0];
+                            uart_valid <= 1'b1;
                         end
                         8'h41: begin
                             amplitude <= cmd_buffer[1];
+                            uart_valid <= 1'b1;
                         end
                         8'h46: begin
                             freq_word <= {cmd_buffer[3], cmd_buffer[2], cmd_buffer[1], cmd_buffer[0]};
+                            uart_valid <= 1'b1;
                         end
                         8'h50: begin
                             phase_offset <= {cmd_buffer[2], cmd_buffer[1]};
+                            uart_valid <= 1'b1;
                         end
                     endcase
                     cmd_state <= 4'd0;
