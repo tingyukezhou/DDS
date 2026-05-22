@@ -1,0 +1,8 @@
+- [x] Checkpoint 1: 测试bench已更新，移除UART相关代码，仅保留按键控制逻辑
+- [x] Checkpoint 2: ModelSim编译脚本(compile.do)已创建，能成功编译所有源文件
+- [x] Checkpoint 3: 仿真运行脚本(simulate.do)已创建，能正常启动仿真
+- [x] Checkpoint 4: 波形配置脚本(wave.do)已创建，关键信号正确显示
+- [x] Checkpoint 5: 主脚本(run_all.do)已创建，支持一键自动化仿真
+- [x] Checkpoint 6: 仿真测试能验证按键控制波形选择功能
+- [x] Checkpoint 7: 仿真测试能验证按键控制幅值调节功能
+- [x] Checkpoint 8: 仿真测试能验证按键控制频率调节功能
